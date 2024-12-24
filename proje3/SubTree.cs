@@ -80,6 +80,25 @@ namespace proje3
             return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
             
         }
+        // Düğüm sayısını hesaplayan metot
+        public int GetNodeCount()
+        {
+            return CountNodes(Root);
+        }
+
+        private int CountNodes(SubTreeNode node)
+        {
+            if (node == null) return 0;
+            return 1 + CountNodes(node.Left) + CountNodes(node.Right);
+        }
+
+        // Dengeli bir ağaç olması durumunda derinlik hesaplama
+        public int GetBalancedTreeDepth()
+        {
+            int nodeCount = GetNodeCount();
+            return (int)Math.Ceiling(Math.Log2(nodeCount + 1));
+        }
+
         public double GetAverageDepth()
         {
             int totalDepth = 0;

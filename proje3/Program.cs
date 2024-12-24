@@ -421,6 +421,15 @@
             tree.PrintTree();
             Console.WriteLine($"Ana Ağacın Derinliği: {tree.GetDepth()}");
             Console.WriteLine($"Tüm Kelimeler Ağaçlarının Ortalama Derinliklerinin Ortalaması: {tree.GetAverageDepthOfAllSubTrees():F2}");
+
+            // Binary Tree düğüm ve derinlik hesaplama
+            int binaryTreeNodeCount = tree.GetNodeCount();
+            int binaryTreeBalancedDepth = tree.GetBalancedTreeDepth();
+
+            Console.WriteLine($"Binary Tree'deki Düğüm Sayısı: {binaryTreeNodeCount}");
+            Console.WriteLine($"Dengeli Bir Binary Tree'nin Derinliği: {binaryTreeBalancedDepth}");
+
+            
         }
     }
 }
