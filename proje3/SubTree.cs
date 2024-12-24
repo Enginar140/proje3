@@ -66,5 +66,17 @@ namespace proje3
                 PrintSubTree(node.Right);
             }
         }
+        // Alt ağacın derinliğini hesaplar
+        public int GetDepth()
+        {
+            return GetDepth(Root);
+        }
+
+        private int GetDepth(SubTreeNode node)
+        {
+            if (node == null)
+                return 0;
+            return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
+        }
     }
 }

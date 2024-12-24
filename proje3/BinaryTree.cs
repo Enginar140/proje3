@@ -71,10 +71,24 @@ namespace proje3
                 // Alt ağacı (kelimeleri) yazdır
                 Console.WriteLine("Bilgi Metni Kelimeleri:");
                 node.InfoTree.PrintSubTree(node.InfoTree.Root);
+                Console.WriteLine($"Alt Ağacın Derinliği: {node.InfoTree.GetDepth()}");
 
                 // Sağ alt ağacı yazdır
                 PrintTree(node.Right);
             }
         }
+        // Ana ağacın derinliğini hesaplar
+        public int GetDepth()
+        {
+            return GetDepth(Root);
+        }
+
+        private int GetDepth(TreeNode node)
+        {
+            if (node == null)
+                return 0;
+            return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
+        }
+
     }
 }

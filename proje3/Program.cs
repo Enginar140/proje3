@@ -419,7 +419,7 @@
                 p++;
             }
             tree.PrintTree();
-            Console.WriteLine("69");
+            Console.WriteLine($"Ana Ağacın Derinliği: {tree.GetDepth()}");
         }
     }
 }
