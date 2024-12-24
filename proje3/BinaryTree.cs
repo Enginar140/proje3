@@ -9,6 +9,7 @@ namespace proje3
     internal class BinaryTree
     {
         public TreeNode Root;
+        public int totalDepth = 0;
 
         public BinaryTree()
         {
@@ -71,7 +72,9 @@ namespace proje3
                 // Alt ağacı (kelimeleri) yazdır
                 Console.WriteLine("Bilgi Metni Kelimeleri:");
                 node.InfoTree.PrintSubTree(node.InfoTree.Root);
+                totalDepth += node.InfoTree.GetDepth();
                 Console.WriteLine($"Alt Ağacın Derinliği: {node.InfoTree.GetDepth()}");
+
 
                 // Sağ alt ağacı yazdır
                 PrintTree(node.Right);
@@ -89,6 +92,25 @@ namespace proje3
                 return 0;
             return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
         }
+        public double GetAverageDepthOfAllSubTrees()
+        {
+            double totalAverageDepth = 0;
+            int fishCount = 0;
+            CalculateAverageDepth(Root, ref totalAverageDepth, ref fishCount);
+            return fishCount == 0 ? 0 : totalAverageDepth / fishCount;
+        }
+
+        private void CalculateAverageDepth(TreeNode node, ref double totalAverageDepth, ref int fishCount)
+        {
+            if (node != null)
+            {
+                totalAverageDepth += node.InfoTree.GetAverageDepth();
+                fishCount++;
+                CalculateAverageDepth(node.Left, ref totalAverageDepth, ref fishCount);
+                CalculateAverageDepth(node.Right, ref totalAverageDepth, ref fishCount);
+            }
+        }
+
 
     }
 }

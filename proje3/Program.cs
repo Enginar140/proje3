@@ -420,6 +420,7 @@
             }
             tree.PrintTree();
             Console.WriteLine($"Ana Ağacın Derinliği: {tree.GetDepth()}");
+            Console.WriteLine($"Tüm Kelimeler Ağaçlarının Ortalama Derinliklerinin Ortalaması: {tree.GetAverageDepthOfAllSubTrees():F2}");
         }
     }
 }

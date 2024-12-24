@@ -9,6 +9,7 @@ namespace proje3
     internal class SubTree
     {
         public SubTreeNode Root;
+        
 
         public SubTree()
         {
@@ -77,6 +78,25 @@ namespace proje3
             if (node == null)
                 return 0;
             return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
+            
+        }
+        public double GetAverageDepth()
+        {
+            int totalDepth = 0;
+            int totalNodes = 0;
+            CalculateDepthAndCount(Root, 1, ref totalDepth, ref totalNodes);
+            return totalNodes == 0 ? 0 : (double)totalDepth / totalNodes;
+        }
+
+        private void CalculateDepthAndCount(SubTreeNode node, int currentDepth, ref int totalDepth, ref int totalNodes)
+        {
+            if (node != null)
+            {
+                totalDepth += currentDepth;
+                totalNodes++;
+                CalculateDepthAndCount(node.Left, currentDepth + 1, ref totalDepth, ref totalNodes);
+                CalculateDepthAndCount(node.Right, currentDepth + 1, ref totalDepth, ref totalNodes);
+            }
         }
     }
 }
