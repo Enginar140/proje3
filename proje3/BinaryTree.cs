@@ -92,24 +92,24 @@ namespace proje3
                 return 0;
             return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
         }
-        public double GetAverageDepthOfAllSubTrees()
-        {
-            double totalAverageDepth = 0;
-            int fishCount = 0;
-            CalculateAverageDepth(Root, ref totalAverageDepth, ref fishCount);
-            return fishCount == 0 ? 0 : totalAverageDepth / fishCount;
-        }
+        //public double GetAverageDepthOfAllSubTrees()
+        //{
+        //    double totalAverageDepth = 0;
+        //    int fishCount = 0;
+        //    CalculateAverageDepth(Root, ref totalAverageDepth, ref fishCount);
+        //    return fishCount == 0 ? 0 : totalAverageDepth / fishCount;
+        //}
 
-        private void CalculateAverageDepth(TreeNode node, ref double totalAverageDepth, ref int fishCount)
-        {
-            if (node != null)
-            {
-                totalAverageDepth += node.InfoTree.GetAverageDepth();
-                fishCount++;
-                CalculateAverageDepth(node.Left, ref totalAverageDepth, ref fishCount);
-                CalculateAverageDepth(node.Right, ref totalAverageDepth, ref fishCount);
-            }
-        }
+        //private void CalculateAverageDepth(TreeNode node, ref double totalAverageDepth, ref int fishCount)
+        //{
+        //    if (node != null)
+        //    {
+        //        totalAverageDepth += node.InfoTree.GetAverageDepth();
+        //        fishCount++;
+        //        CalculateAverageDepth(node.Left, ref totalAverageDepth, ref fishCount);
+        //        CalculateAverageDepth(node.Right, ref totalAverageDepth, ref fishCount);
+        //    }
+        //}
 
 
     }

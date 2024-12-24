@@ -420,7 +420,34 @@
             }
             tree.PrintTree();
             Console.WriteLine($"Ana Ağacın Derinliği: {tree.GetDepth()}");
-            Console.WriteLine($"Tüm Kelimeler Ağaçlarının Ortalama Derinliklerinin Ortalaması: {tree.GetAverageDepthOfAllSubTrees():F2}");
+
+
+            // Ortalama derinlik hesaplama metodu
+            void CalculateAverageDepth(TreeNode node)
+            {
+                double totalAverageDepth = 0;
+                int fishCount = 0;
+
+                void TraverseAndCalculate(TreeNode currentNode)
+                {
+                    if (currentNode != null)
+                    {
+                        totalAverageDepth += currentNode.InfoTree.GetAverageDepth();
+                        fishCount++;
+                        TraverseAndCalculate(currentNode.Left);
+                        TraverseAndCalculate(currentNode.Right);
+                    }
+                }
+
+                TraverseAndCalculate(node);
+
+                double averageDepth = fishCount == 0 ? 0 : totalAverageDepth / fishCount;
+                Console.WriteLine($"Tüm Kelimeler Ağaçlarının Ortalama Derinliklerinin Ortalaması: {averageDepth:F2}");
+                int dengeliDepth=(int)Math.Floor(Math.Log2( + 1));
+            }
+
+            CalculateAverageDepth(tree.Root);
+            
         }
     }
 }

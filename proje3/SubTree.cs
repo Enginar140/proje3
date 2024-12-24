@@ -98,5 +98,6 @@ namespace proje3
                 CalculateDepthAndCount(node.Right, currentDepth + 1, ref totalDepth, ref totalNodes);
             }
         }
+
     }
 }
