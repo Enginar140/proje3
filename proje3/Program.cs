@@ -419,6 +419,7 @@
                 p++;
             }
             tree.PrintTree();
+            Console.WriteLine("31");
         }
     }
 }
