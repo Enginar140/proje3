@@ -369,12 +369,14 @@
                 """;
             //balık nesnelerini tutan generic list
             List<EgeDeniziB> egeBaliklari = new List<EgeDeniziB>();
+            var tree = new BinaryTree();
             //metni her balık için bölüyorum
             string[] parcalanmisMetin = metin.Split("$", StringSplitOptions.RemoveEmptyEntries);
+            int p = 1;
             foreach (string veri in parcalanmisMetin)
             {
                 string[] satirlar = veri.Trim().Split("\n", StringSplitOptions.RemoveEmptyEntries);
-                string tamAd = (satirlar[0].Trim()).Substring(3);
+                string tamAd = (satirlar[0].Trim()).Substring(p<10?3:4);
                 string balikAdi;
                 string digerAdi;
                 if (tamAd.Contains('('))
@@ -413,7 +415,10 @@
                 ortam.Add("Ege Denizi");
                 EgeDeniziB balik = new EgeDeniziB(balikAdi, digerAdi, boyut, bilgi, ortam);
                 egeBaliklari.Add(balik);
+                tree.Insert(balik);
+                p++;
             }
+            tree.PrintTree();
         }
     }
 }
